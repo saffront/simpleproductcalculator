@@ -19,9 +19,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
   </head>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
@@ -46,137 +43,171 @@
           </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-          <button class="sort" data-sort="name">Sort</button>
-          <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-        <main class="col-sm-12 col-md-12 pt-3">
+        <main class="col-sm-12 col-md-12 pt-3" id="products">
           <h1>Dashboard</h1>
+          <input class="search" placeholder="Search" />
+            <button class="sort btn btn-primary" data-sort="name">
+              Sort by name
+            </button>
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Product</th>
                   <th>Average Chicken Weight</th>
                   <th>Number of Birds</th>
-                  <th>Dosage</th>
-                  <th>Button</th>
-                  <th>Total Per Day</th>
+                  <!-- <th>Dosage</th> -->
+                  <th>Total in Litres</th>
+                  <th>Total in Gallons</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="list">
                 <tr>
-                  <td>Amprolox</td>
-                  <td><input type="number" class="weight" name="weight[]"></td>
-                  <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.6g Amprolox 20%, 3-5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <td class="name">Amprolox</td>
+                  <td><input type="number" class="weight" name="weight[]" disabled></td>
+                  <td><input type="number" class="birds" name="birds[]" disabled></td>
+                  <!-- <td class="prescription"><b>0.6g Amprolox 20% per litre of water - 3-5 days (normal outbreak), 1.2g Amprolox 20% per litre water - 3-5 days (severe outbreak)</b></td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td><span>0.6g 3至5 天 (一般), 1.2g for 3-5 days and continue 0.3g for 1-2 weeks (严重)</span></td>
+                  <td><span>****0.1584g for 3-5 days (normal), 0.3048g for 3-5 days and continue 0.0792g for 1-2 weeks (severe)</span></td>
                 </tr>
                 <tr>
-                  <td>Aprasure</td>
-                  <td><input type="number" class="weight" name="weight[]"></td>
-                  <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <td class="name">Aprasure</td>
+                  <td><input type="number" class="weight" name="weight[]" disabled></td>
+                  <td><input type="number" class="birds" name="birds[]" disabled></td>
+                  <!-- <td class="prescription"><b>0.5g - 1g Aprasure 50% per litre water - 5 days</b></td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td><span>0.5g - 1g Aprasure 50% per litre water - 5 天</span></td>
+                  <td><span> - Aprasure 50% per gallon water - 5 天</span></td>
                 </tr>
                 <tr>
-                  <td>Colisol</td>
+                  <td class="name">Colisol</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">1g Colisol 2.5% per 10kg bodyweight daily for 3-5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">100mg Colisol 2.5% per kg bodyweight daily for 3-5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.1" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Cefalexol</td>
-                  <td><input type="number" class="weight" name="weight[]"></td>
-                  <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.25-0.5g Cefalexol 50% per litre water</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <td class="name">Cefalexol</td>
+                  <td><input type="number" class="weight" name="weight[]" disabled></td>
+                  <td><input type="number" class="birds" name="birds[]" disabled></td>
+                  <!-- <td class="prescription"><b>0.25-0.5g Cefalexol 50% per litre water</b></td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td><span>0.25至0.5g Cefalexol 50% per litre water - 5 天</span></td>
+                  <td><span> - Cefalexol 50% per gallon water - 5 天</span></td>
                 </tr>
                 <tr>
-                  <td>Erytrosure</td>
+                  <td class="name">Erytrosure</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">25.5g erythromycin per kg bodyweight, continuously for 1-5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">25.5mg erythromycin per kg bodyweight, continuously for 1-5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="25.5" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Moxi 50</td>
+                  <td class="name">Moxi 50</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">15mg amoxicillin trihydrate per kg bodyweight. Give on alternate days for 3 days (day 1 and 3)
-                  or in severe cases for 5 days (day 1, 3, and 5)</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">15mg amoxicillin trihydrate per kg bodyweight. Give on alternate days for 3 days (day 1 and 3) or in severe cases for 5 days (day 1, 3, and 5)</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="15" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="575" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Neocin</td>
+                  <td class="name">Neocin</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">4.08-6.12g Neocin per 100kg bodyweight every 12 hours for 3-5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">4.08-6.12g Neocin per 100kg bodyweight every 12 hours for 3-5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="7.7" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Sulfacox</td>
+                  <td class="name">Sulfacox**</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>ES-Tysol</td>
+                  <td class="name">ES-Tysol CRD 一般</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="300" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>ES-Moxi</td>
+                  <td class="name">ES-Tysol CRD 严重</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="400" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Taipan</td>
+                  <td class="name">ES-Tysol Necrotic Enteritis</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="40" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
                 </tr>
                 <tr>
-                  <td>Zeolytes</td>
+                  <td class="name">ES-Moxi</td>
                   <td><input type="number" class="weight" name="weight[]"></td>
                   <td><input type="number" class="birds" name="birds[]"></td>
-                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
-                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
-                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
-                  <td><input name="total[]" class="total" /></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="15" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="500" style="display:none;"/></td>
+                  <td>每天<input name="total[]" class="total" />g per 1000 litre water</td>
+                  <td>每天<input name="totalgall[]" class="totalgall" />g per 1000 gallons water</td>
+                </tr>
+                <tr>
+                  <td class="name">Taipan</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td><span>1g Taipan per litre water</span></td>
+                  <td><span>0.264g Taipan per gallon water</span></td>
+                </tr>
+                <tr>
+                  <td class="name">Zeolytes</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <!-- <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td> -->
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="0.6" style="display:none;"/></td>
+                  <td style="display:none;"><input type="number" class="concentration" name="concentration[]" value="1" style="display:none;"/></td>
+                  <td><span>500g Zeolytes per 450 litres water for 3-5 days</span></td>
+                  <td><span>0.264g Taipan per gallon water</span></td>
                 </tr>
               </tbody>
             </table>
@@ -198,7 +229,19 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/list.js/dist/list.min.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
+
+    <script>
+    var options = {
+      valueNames: [ 'name' ]
+    };
+
+    var productList = new List('products', options);
+    </script>
     <!-- endbower -->
     <!-- endbuild -->
 
