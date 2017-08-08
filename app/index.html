@@ -1,0 +1,213 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Range Pharma Products</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Dashboard</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a> -->
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <button class="sort" data-sort="name">Sort</button>
+          <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <main class="col-sm-12 col-md-12 pt-3">
+          <h1>Dashboard</h1>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Average Chicken Weight</th>
+                  <th>Number of Birds</th>
+                  <th>Dosage</th>
+                  <th>Button</th>
+                  <th>Total Per Day</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Amprolox</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.6g Amprolox 20%, 3-5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Aprasure</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Colisol</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">1g Colisol 2.5% per 10kg bodyweight daily for 3-5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Cefalexol</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.25-0.5g Cefalexol 50% per litre water</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Erytrosure</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">25.5g erythromycin per kg bodyweight, continuously for 1-5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Moxi 50</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">15mg amoxicillin trihydrate per kg bodyweight. Give on alternate days for 3 days (day 1 and 3)
+                  or in severe cases for 5 days (day 1, 3, and 5)</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Neocin</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">4.08-6.12g Neocin per 100kg bodyweight every 12 hours for 3-5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Sulfacox</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>ES-Tysol</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>ES-Moxi</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Taipan</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+                <tr>
+                  <td>Zeolytes</td>
+                  <td><input type="number" class="weight" name="weight[]"></td>
+                  <td><input type="number" class="birds" name="birds[]"></td>
+                  <td class="prescription">0.5g - 1g Aprasure 50%, 5 days</td>
+                  <td style="display:none;"><input type="number" class="dosage" name="dosage[]" value="4" style="display:none;"/></td>
+                  <td><button type="button" id="calculate" class="btn btn-primary">Calculate</button></td>
+                  <td><input name="total[]" class="total" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
